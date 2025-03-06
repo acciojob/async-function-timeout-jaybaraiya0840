@@ -1,19 +1,12 @@
 //your JS code here. If required.
-document.getElementById("btn").addEventListener("click", async function () {
-    const textInput = document.getElementById("text").value;
-    const delayInput = document.getElementById("delay").value;
-    const outputDiv = document.getElementById("output");
-    
-    if (!textInput || !delayInput) {
-        outputDiv.innerText = "Please enter both text and delay values.";
-        return;
-    }
-    
-    outputDiv.innerText = "Waiting...";
-    await delayMessage(textInput, parseInt(delayInput));
-});
-
-async function delayMessage(message, delay) {
+async function displayMessage(text, delay) {
     await new Promise(resolve => setTimeout(resolve, delay));
-    document.getElementById("output").innerText = message;
+    document.getElementById('output').innerText = text;
 }
+
+// Add event listener to the button
+document.getElementById('btn').addEventListener('click', async function() {
+    let text = document.getElementById('text').value;
+    let delay = document.getElementById('delay').value;
+    await displayMessage(text, delay);
+});
